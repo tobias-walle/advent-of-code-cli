@@ -17,19 +17,13 @@ It requires the AOC_SESSION environment variable to be defined. You can get the 
 
 You also need to define a `./template` folder which gets copied then creating a problem folder.
 
-Example: ```sh export AOC_SESSION="<your-session>" mkdir ./template # Feel free to add your code boilerplate in this folder aoc new -y 2020 -d 1 # This will create the "day_1" folder and downloads the problem into it # After you solved the problem cd day_1 aoc submit -l 1 # Download the second problem aoc download # Submit it aoc submit -l 2 ```
-
 Usage: aoc [OPTIONS] <COMMAND>
 
 Commands:
-  new
-          Creates a new folder and downloads the problem into it
-  download
-          Download the problem statement, input and example
-  submit
-          Submit your result
-  help
-          Print this message or the help of the given subcommand(s)
+  new       Creates a new folder and downloads the problem into it
+  download  Download the problem statement, input and example
+  submit    Submit your result
+  help      Print this message or the help of the given subcommand(s)
 
 Options:
   -c, --config <CONFIG>
@@ -38,5 +32,20 @@ Options:
           [default: ./aoc.toml]
 
   -h, --help
-          Print help information (use `-h` for a summary)
+          Print help (see a summary with '-h')
 ````
+
+Example:
+
+```sh
+export AOC_SESSION="<your-session>"
+mkdir ./template # Feel free to add your code boilerplate in this folder
+aoc new -y 2020 -d 1 # This will create the "day_1" folder and downloads the problem into it
+# After you solved the problem
+cd day_1
+aoc submit -l 1
+# Download the second problem
+aoc download
+# Submit it
+aoc submit -l 2
+```
