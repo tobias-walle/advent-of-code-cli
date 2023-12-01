@@ -2,13 +2,32 @@
 
 CLI client for advent of code.
 
+## Example
+
+```sh
+export AOC_SESSION="<your-session>"
+mkdir ./template # Feel free to add your code boilerplate in this folder
+aoc new -y 2020 -d 1 # This will create the "day_1" folder and downloads the problem into it
+# After you solved the problem
+cd day_1
+aoc submit -l 1
+# Download the second problem
+aoc download
+# Submit it
+aoc submit -l 2
+```
+
+## Installation
+
 Install it with [cargo](https://doc.rust-lang.org/cargo/getting-started/installation.html):
 
 ```
 cargo install --git https://github.com/tobias-walle/advent-of-code-cli`
 ```
 
-Documentation (`aoc --help`):
+## Documentation
+
+`aoc --help`:
 
 ````
 Tool to automate downloading and submitting advent of code problems.
@@ -34,18 +53,3 @@ Options:
   -h, --help
           Print help (see a summary with '-h')
 ````
-
-Example:
-
-```sh
-export AOC_SESSION="<your-session>"
-mkdir ./template # Feel free to add your code boilerplate in this folder
-aoc new -y 2020 -d 1 # This will create the "day_1" folder and downloads the problem into it
-# After you solved the problem
-cd day_1
-aoc submit -l 1
-# Download the second problem
-aoc download
-# Submit it
-aoc submit -l 2
-```
