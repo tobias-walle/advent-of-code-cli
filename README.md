@@ -2,6 +2,12 @@
 
 CLI client for advent of code.
 
+Install it with [cargo](https://doc.rust-lang.org/cargo/getting-started/installation.html):
+
+```
+cargo install --git https://github.com/tobias-walle/advent-of-code-cli`
+```
+
 Documentation (`aoc --help`):
 
 ````
