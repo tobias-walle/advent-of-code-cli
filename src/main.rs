@@ -16,6 +16,7 @@ use colored::Colorize;
 use eyre::{bail, Context, Result};
 use regex::{Captures, Regex};
 use reqwest::header::HeaderMap;
+use scraper::{Html, Selector};
 use tokio::{fs, try_join};
 
 const PATH_EXAMPLE: &str = "./example.txt";
@@ -258,15 +259,12 @@ async fn download_potential_examples(
         .error_for_status()?
         .text()
         .await?;
-    let dom = tl::parse(&html, Default::default())?;
-    let parser = dom.parser();
-    let examples: Vec<String> = dom
-        .query_selector("pre")
-        .unwrap()
-        .map(|element| element.get(parser).unwrap())
-        .map(|node| {
-            node.inner_text(parser)
-                .to_string()
+    let document = Html::parse_document(&html);
+    let examples: Vec<String> = document
+        .select(&Selector::parse("pre code").unwrap())
+        .map(|element| {
+            element
+                .inner_html()
                 .replace("&lt;", "<")
                 .replace("&gt;", ">")
         })
@@ -316,12 +314,10 @@ fn limit_size<T>(list: &[T], limit: usize) -> &[T] {
 }
 
 fn format_html_output(html: &str) -> Result<String> {
-    let dom = tl::parse(html, Default::default())?;
-    let parser = dom.parser();
-    let articles: Vec<_> = dom
-        .query_selector("article")
-        .unwrap()
-        .map(|node| node.get(parser).unwrap().inner_html(parser))
+    let document = Html::parse_document(html);
+    let articles: Vec<_> = document
+        .select(&Selector::parse("article.day-desc").unwrap())
+        .map(|element| element.inner_html())
         .collect();
     let articles = articles.join("\n");
     let html = format!("<div>{articles}</div>");
