@@ -31,7 +31,12 @@ async fn main() -> Result<()> {
     let session = env::var("AOC_SESSION").context("AOC_SESSION not defined in environment")?;
 
     let mut headers = HeaderMap::new();
-    headers.insert("cookie", format!("session={session}").parse()?);
+    headers.insert("Cookie", format!("session={session}").parse()?);
+    // Required by automation policy: https://www.reddit.com/r/adventofcode/wiki/faqs/automation
+    headers.insert(
+        "User-Agent",
+        "https://github.com/tobias-walle/advent-of-code-cli by git@tobias.walle.email".parse()?,
+    );
     let client = reqwest::Client::builder()
         .default_headers(headers)
         .build()?;
