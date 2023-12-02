@@ -11,7 +11,7 @@ This is actively [discouraged by the AoC team](https://adventofcode.com/about#fa
 and against the spirit of AoC.
 
 Please also be careful to not send too many requests.
-There is a note about this in the html source code (view-source:https://adventofcode.com/):
+There is a note about this in the html source code (<view-source:https://adventofcode.com/>):
 
 > Please be careful with automated requests; I'm not a massive company, and I can
 > only take so much traffic. Please be considerate so that everyone gets to play.\
