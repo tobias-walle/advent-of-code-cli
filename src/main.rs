@@ -278,6 +278,12 @@ async fn choose_and_save_correct_example(examples: Vec<String>, output_file: &st
         return Ok(());
     }
 
+    if examples.len() == 1 {
+        println!("{}", "Found one example.".cyan());
+        save(output_file, &examples[0]).await?;
+        return Ok(());
+    }
+
     println!(
         "{}",
         format!(
