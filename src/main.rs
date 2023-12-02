@@ -322,7 +322,7 @@ fn limit_size<T>(list: &[T], limit: usize) -> &[T] {
 fn format_html_output(html: &str) -> Result<String> {
     let document = Html::parse_document(html);
     let articles: Vec<_> = document
-        .select(&Selector::parse("article.day-desc").unwrap())
+        .select(&Selector::parse("article").unwrap())
         .map(|element| element.inner_html())
         .collect();
     let articles = articles.join("\n");
