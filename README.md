@@ -5,6 +5,8 @@ CLI client for advent of code.
 ## Example
 
 ```sh
+# You can get the session from the cookies of https://adventofcode.com
+# It has a relatively long lifetime so you can set it in your .bashrc and co
 export AOC_SESSION="<your-session>"
 mkdir ./template # Feel free to add your code boilerplate in this folder
 aoc new -y 2020 -d 1 # This will create the "day_1" folder and downloads the problem into it
